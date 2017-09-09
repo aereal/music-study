@@ -26,4 +26,14 @@ object PitchClass {
   case object B extends PitchClass
   case object H extends PitchClass
   case object His extends PitchClass
+
+  val values: Seq[PitchClass] =
+    Ces :: C :: Cis ::
+      Des :: D :: Dis ::
+      Es :: E :: Eis ::
+      Fes :: F :: Fis ::
+      Ges :: G :: Gis ::
+      As :: A :: Ais ::
+      B :: H :: His ::
+      Nil
 }
