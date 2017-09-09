@@ -16,5 +16,14 @@ case class Number(val value: Int) extends AnyVal {
   }
 }
 object Number {
+  final val First = Number(1)
+  final val Second = Number(2)
+  final val Third = Number(3)
+  final val Fourth = Number(4)
+  final val Fifth = Number(5)
+  final val Sixth = Number(6)
+  final val Seventh = Number(7)
+  final val Eighth = Number(8)
+
   def apply(value: Int): Number = new Number(value)
 }
