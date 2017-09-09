@@ -5,25 +5,25 @@ package music
 
 sealed abstract class PitchClass
 object PitchClass {
+  case object Ces extends PitchClass
   case object C extends PitchClass
   case object Cis extends PitchClass
-  val Des = Cis
+  case object Des extends PitchClass
   case object D extends PitchClass
   case object Dis extends PitchClass
-  val Es = Dis
+  case object Es extends PitchClass
   case object E extends PitchClass
-  val Fes = E
+  case object Fes extends PitchClass
   case object F extends PitchClass
-  val Eis = F
+  case object Eis extends PitchClass
   case object Fis extends PitchClass
-  val Ges = Fis
+  case object Ges extends PitchClass
   case object G extends PitchClass
   case object Gis extends PitchClass
-  val As = Gis
+  case object As extends PitchClass
   case object A extends PitchClass
   case object Ais extends PitchClass
-  val B = Ais
+  case object B extends PitchClass
   case object H extends PitchClass
-  val Ces = H
-  val His = C
+  case object His extends PitchClass
 }
