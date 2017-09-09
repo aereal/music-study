@@ -25,6 +25,10 @@ lazy val root = (project in file("."))
       "-Dfile.encoding=UTF-8" ::
       Nil,
     fork in Test := true,
+    libraryDependencies ++= Seq(
+      "org.scalactic" %% "scalactic" % "3.0.1",
+      "org.scalatest" %% "scalatest" % "3.0.1"
+    ),
     scalafmtOnCompile in ThisBuild := true,
     scalafmtTestOnCompile in ThisBuild := true
   )
