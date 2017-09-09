@@ -24,5 +24,7 @@ lazy val root = (project in file("."))
     javaOptions ++= Nil :::
       "-Dfile.encoding=UTF-8" ::
       Nil,
-    fork in Test := true
+    fork in Test := true,
+    scalafmtOnCompile in ThisBuild := true,
+    scalafmtTestOnCompile in ThisBuild := true
   )
