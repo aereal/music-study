@@ -3,7 +3,15 @@ package github
 package aereal
 package music
 
-class Frequency(val value: Float) extends AnyVal
+import scala.math.BigDecimal
+
+class Frequency(val value: BigDecimal) extends AnyVal {
+  def *(ratio: BigDecimal): Frequency = new Frequency(value * ratio)
+
+  def /(ratio: BigDecimal): Frequency = new Frequency(value / ratio)
+
+  override def toString: String = s"Frequency(${this.value})"
+}
 object Frequency {
-  def apply(int: Int): Frequency = new Frequency(int.toFloat)
+  def apply(bigDecimal: BigDecimal): Frequency = new Frequency(bigDecimal)
 }
