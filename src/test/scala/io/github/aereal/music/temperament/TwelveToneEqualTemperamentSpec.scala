@@ -4,6 +4,8 @@ package aereal
 package music
 package temperament
 
+import java.math.MathContext
+
 class TwelveToneEqualTemperamentSpec extends BaseSpec {
   describe("12-tone equal temperament") {
     import TwelveToneEqualTemperament.Implicits._
@@ -16,6 +18,13 @@ class TwelveToneEqualTemperamentSpec extends BaseSpec {
       pitch1.pitchClass shouldBe PitchClass.A
       pitch2.pitchClass shouldBe PitchClass.A
       pitch3.pitchClass shouldBe PitchClass.B
+    }
+
+    it("pitch interval") {
+      import TwelveToneEqualTemperament.Pitch
+
+      val interval = TwelveToneEqualTemperament.intervalOf(Pitch.D4, Pitch.C4)
+      interval shouldBe Interval(2)
     }
   }
 }

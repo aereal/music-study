@@ -33,10 +33,24 @@ object TwelveToneEqualTemperament extends Temperament {
       case _ => None
     }
 
+  def intervalOf(a: BasePitch, b: BasePitch): Interval = {
+    def log(base: BigDecimal, anti: BigDecimal): BigDecimal = {
+      val x = BigDecimal(scala.math.log(base.doubleValue()), base.mc)
+      val y = BigDecimal(scala.math.log(anti.doubleValue()), anti.mc)
+      x / y
+    }
+    val ratio = a.frequency.value / b.frequency.value
+    Interval(
+      log(ratio, Pitch.ratio)
+        .setScale(0, BigDecimal.RoundingMode.HALF_EVEN)
+        .toInt
+    )
+  }
+
   class Pitch(val frequency: Frequency, val pitchClass: PitchClass)
       extends BasePitch
   object Pitch {
-    val ratio = scala.math.pow(2, 1f / 12f)
+    val ratio = BigDecimal(scala.math.pow(2, 1f / 12f))
     val A4 = new Pitch(Frequency(BigDecimal(442)), PitchClass.A)
     val B4 = new Pitch(A4.frequency * ratio, PitchClass.B)
     val H4 = new Pitch(B4.frequency * ratio, PitchClass.H)
