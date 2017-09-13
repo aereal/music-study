@@ -4,15 +4,15 @@ package aereal
 package music
 package temperament
 
+import pitch.PitchClass
 import scala.math.BigDecimal
-import music.{Pitch => BasePitch}
 
 object TwelveToneEqualTemperament extends Temperament {
   object Implicits {
     implicit val twelveToneEqualTemperament = TwelveToneEqualTemperament
   }
 
-  def pitchFor(frequency: Frequency): Option[BasePitch] =
+  def pitchFor(frequency: Frequency): Option[pitch.Pitch] =
     pitchClassFor(frequency).map(pitchClass =>
       new Pitch(frequency, pitchClass))
 
@@ -33,14 +33,14 @@ object TwelveToneEqualTemperament extends Temperament {
       case _ => None
     }
 
-  def intervalOf(a: BasePitch, b: BasePitch): Interval = {
+  def intervalOf(a: pitch.Pitch, b: pitch.Pitch): Interval = {
     new Interval(a.frequency.value / b.frequency.value)
   }
 
   val halfToneRatio: BigDecimal = BigDecimal(scala.math.pow(2, 1f / 12f))
 
   class Pitch(val frequency: Frequency, val pitchClass: PitchClass)
-      extends BasePitch
+      extends pitch.Pitch
   object Pitch {
     val ratio = halfToneRatio
     val A4 = new Pitch(Frequency(BigDecimal(442)), PitchClass.A)

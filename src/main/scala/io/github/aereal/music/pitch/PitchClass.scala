@@ -2,6 +2,7 @@ package io
 package github
 package aereal
 package music
+package pitch
 
 sealed abstract class PitchClass
 object PitchClass {
