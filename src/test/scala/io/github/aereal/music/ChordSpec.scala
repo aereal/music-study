@@ -16,10 +16,11 @@ class ChordSpec extends BaseSpec {
       }
     }
 
-    describe("root") {
+    describe("root, second") {
       it("is lowest pitch") {
         val c = Chord(E4, G4, C4)
         c.root shouldBe C4
+        c.second shouldBe E4
       }
     }
   }
