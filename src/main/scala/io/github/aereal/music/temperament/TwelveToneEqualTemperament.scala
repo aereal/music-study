@@ -33,6 +33,10 @@ object TwelveToneEqualTemperament extends Temperament {
       case _ => None
     }
 
+  def intervalOf(a: BasePitch, b: BasePitch): Interval = {
+    new Interval(a.frequency.value / b.frequency.value)
+  }
+
   val halfToneRatio: BigDecimal = BigDecimal(scala.math.pow(2, 1f / 12f))
 
   class Pitch(val frequency: Frequency, val pitchClass: PitchClass)

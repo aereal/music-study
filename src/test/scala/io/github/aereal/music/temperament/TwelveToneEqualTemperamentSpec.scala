@@ -17,5 +17,21 @@ class TwelveToneEqualTemperamentSpec extends BaseSpec {
       pitch2.pitchClass shouldBe PitchClass.A
       pitch3.pitchClass shouldBe PitchClass.B
     }
+
+    describe("intervalOf") {
+      import TwelveToneEqualTemperament.Pitch
+
+      it("returns whole tone interval") {
+        val interval =
+          TwelveToneEqualTemperament.intervalOf(Pitch.D4, Pitch.C4)
+        interval.halfTones shouldBe 2
+      }
+
+      it("returns 0 if same pitch") {
+        val interval =
+          TwelveToneEqualTemperament.intervalOf(Pitch.D4, Pitch.D4)
+        interval.halfTones shouldBe 0
+      }
+    }
   }
 }
