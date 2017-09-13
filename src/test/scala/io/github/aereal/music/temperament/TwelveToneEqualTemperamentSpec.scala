@@ -5,6 +5,7 @@ package music
 package temperament
 
 import pitch.PitchClass
+import pitch.Pitch
 
 class TwelveToneEqualTemperamentSpec extends BaseSpec {
   describe("12-tone equal temperament") {
