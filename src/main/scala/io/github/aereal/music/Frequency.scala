@@ -14,4 +14,6 @@ class Frequency(val value: BigDecimal) extends AnyVal {
 }
 object Frequency {
   def apply(bigDecimal: BigDecimal): Frequency = new Frequency(bigDecimal)
+
+  implicit val orderingFrequency: Ordering[Frequency] = Ordering.by(_.value)
 }

@@ -14,4 +14,6 @@ object Pitch {
   def apply(frequency: Frequency)(
       implicit temperament: Temperament): Option[Pitch] =
     temperament.pitchFor(frequency)
+
+  implicit val orderingPitch: Ordering[Pitch] = Ordering.by(_.frequency)
 }
