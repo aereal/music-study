@@ -24,7 +24,7 @@ class TwelveToneEqualTemperamentSpec extends BaseSpec {
       import TwelveToneEqualTemperament.Pitch
 
       val interval = TwelveToneEqualTemperament.intervalOf(Pitch.D4, Pitch.C4)
-      interval shouldBe Interval(2)
+      interval.halfTones shouldBe 2
     }
   }
 }
