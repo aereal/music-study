@@ -4,6 +4,7 @@ package aereal
 package music
 package temperament
 
+import pitch.PitchClass
 import scala.math.BigDecimal
 import music.{Pitch => BasePitch}
 

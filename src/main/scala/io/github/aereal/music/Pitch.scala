@@ -3,6 +3,7 @@ package github
 package aereal
 package music
 
+import pitch.PitchClass
 import temperament.Temperament
 
 trait Pitch {

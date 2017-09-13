@@ -4,6 +4,8 @@ package aereal
 package music
 package temperament
 
+import pitch.PitchClass
+
 class TwelveToneEqualTemperamentSpec extends BaseSpec {
   describe("12-tone equal temperament") {
     import TwelveToneEqualTemperament.Implicits._
