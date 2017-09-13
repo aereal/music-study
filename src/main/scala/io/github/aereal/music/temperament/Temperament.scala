@@ -6,5 +6,6 @@ package temperament
 
 trait Temperament {
   def pitchFor(frequency: Frequency): Option[Pitch]
+  def halfToneRatio: BigDecimal
 }
 object Temperament {}

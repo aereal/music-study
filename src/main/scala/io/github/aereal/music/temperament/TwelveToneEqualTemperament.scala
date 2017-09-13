@@ -33,10 +33,12 @@ object TwelveToneEqualTemperament extends Temperament {
       case _ => None
     }
 
+  val halfToneRatio: BigDecimal = BigDecimal(scala.math.pow(2, 1f / 12f))
+
   class Pitch(val frequency: Frequency, val pitchClass: PitchClass)
       extends BasePitch
   object Pitch {
-    val ratio = scala.math.pow(2, 1f / 12f)
+    val ratio = halfToneRatio
     val A4 = new Pitch(Frequency(BigDecimal(442)), PitchClass.A)
     val B4 = new Pitch(A4.frequency * ratio, PitchClass.B)
     val H4 = new Pitch(B4.frequency * ratio, PitchClass.H)
