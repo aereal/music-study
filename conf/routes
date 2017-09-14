@@ -1,0 +1,1 @@
+GET  /  io.github.aereal.music.web.controllers.RootController.index()

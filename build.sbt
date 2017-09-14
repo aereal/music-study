@@ -47,6 +47,7 @@ lazy val root = (project in file("."))
       Nil,
     fork in Test := true,
     libraryDependencies ++= Seq(
+      guice,
       "org.scalactic" %% "scalactic" % "3.0.1",
       "org.scalatest" %% "scalatest" % "3.0.1"
     ),
