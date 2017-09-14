@@ -4,7 +4,7 @@ package aereal
 package music
 package pitch
 
-sealed abstract class PitchClass {
+sealed abstract class PitchClass(val label: String) {
   def next: PitchClass = PitchClass.minimalValues.indexOf(this) match {
     case -1 => sys.error("BUG")
     case last if last == (PitchClass.minimalValues.size - 1) =>
@@ -22,25 +22,25 @@ sealed abstract class PitchClass {
   }
 }
 object PitchClass {
-  case object C extends PitchClass
-  case object Cis extends PitchClass
+  case object C extends PitchClass("C")
+  case object Cis extends PitchClass("Cis")
   val Des = Cis
-  case object D extends PitchClass
-  case object Dis extends PitchClass
+  case object D extends PitchClass("D")
+  case object Dis extends PitchClass("Dis")
   val Es = Dis
-  case object E extends PitchClass
+  case object E extends PitchClass("E")
   val Fes = E
-  case object F extends PitchClass
+  case object F extends PitchClass("F")
   val Eis = F
-  case object Fis extends PitchClass
+  case object Fis extends PitchClass("Fis")
   val Ges = Fis
-  case object G extends PitchClass
-  case object Gis extends PitchClass
+  case object G extends PitchClass("G")
+  case object Gis extends PitchClass("Gis")
   val As = Gis
-  case object A extends PitchClass
-  case object Ais extends PitchClass
+  case object A extends PitchClass("A")
+  case object Ais extends PitchClass("B")
   val B = Ais
-  case object H extends PitchClass
+  case object H extends PitchClass("H")
   val Ces = H
   val His = C
 
