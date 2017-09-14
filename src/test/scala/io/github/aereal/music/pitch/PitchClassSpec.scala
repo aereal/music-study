@@ -23,5 +23,15 @@ class PitchClassSpec extends BaseSpec {
       val i2 = PitchClass.D.intervalOf(PitchClass.C)
       i2 shouldBe IntervalClass.WholeTone
     }
+
+    describe("+") {
+      it("returns PitchClass that forwarded given interval") {
+        val p1 = PitchClass.C + IntervalClass.WholeTone
+        p1 shouldBe PitchClass.D
+
+        val p2 = PitchClass.H + IntervalClass.HalfTone
+        p2 shouldBe PitchClass.C
+      }
+    }
   }
 }

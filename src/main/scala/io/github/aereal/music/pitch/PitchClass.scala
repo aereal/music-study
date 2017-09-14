@@ -12,6 +12,9 @@ sealed abstract class PitchClass {
     case idx => PitchClass.minimalValues(idx + 1)
   }
 
+  def +(interval: IntervalClass): PitchClass =
+    PitchClass.values.dropWhile(p => p != this).drop(interval.halfTones).head
+
   def intervalOf(other: PitchClass): IntervalClass = {
     val a = PitchClass.minimalValues.indexOf(this)
     val b = PitchClass.minimalValues.indexOf(other)
