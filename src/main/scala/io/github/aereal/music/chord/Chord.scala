@@ -30,6 +30,18 @@ object Chord {
       fifthInterval == IntervalClass.PerfectFifth || fifthInterval == IntervalClass.AugmentedFifth || fifthInterval == IntervalClass.DiminishedFifth
   }
   object Triad {
+    def major(root: PitchClass): Triad = Triad(
+      root,
+      root + IntervalClass.MajorThird,
+      root + IntervalClass.PerfectFifth
+    )
+
+    def minor(root: PitchClass): Triad = Triad(
+      root,
+      root + IntervalClass.MinorThird,
+      root + IntervalClass.PerfectFifth
+    )
+
     def apply(t1: PitchClass, t2: PitchClass, t3: PitchClass): Triad =
       new Triad {
         val root = t1

@@ -35,5 +35,17 @@ class ChordSpec extends BaseSpec {
       minorC.isTriad shouldBe true
       other.isTriad shouldBe false
     }
+
+    describe("Chord.Triad") {
+      it("can be built from the root tone and #major method") {
+        val c = Chord.Triad.major(C)
+        c shouldBe Chord.Triad(C, E, G)
+      }
+
+      it("can be built from the root tone and #minor method") {
+        val c = Chord.Triad.minor(C)
+        c shouldBe Chord.Triad(C, Es, G)
+      }
+    }
   }
 }
