@@ -11,6 +11,11 @@ class PitchClassSpec extends BaseSpec {
       PitchClass.H.next shouldBe PitchClass.C
     }
 
+    it("has equality") {
+      PitchClass.C shouldBe PitchClass.C
+      PitchClass.C shouldNot be(PitchClass.Cis)
+    }
+
     it("has a difference between other pitch class") {
       val i1 = PitchClass.C.intervalOf(PitchClass.C)
       i1 shouldBe IntervalClass.Same
