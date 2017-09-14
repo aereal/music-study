@@ -13,6 +13,11 @@ class ChordSpec extends BaseSpec {
     val majorC = Chord.Triad(C, E, G)
     val minorC = Chord.Triad(C, Es, G)
 
+    it("has equality") {
+      majorC shouldBe Chord.Triad(C, E, G)
+      majorC shouldNot be(minorC)
+    }
+
     it("is major if interval of third tone and root tone is major third") {
       majorC.isMajor shouldBe true
       minorC.isMajor shouldBe false

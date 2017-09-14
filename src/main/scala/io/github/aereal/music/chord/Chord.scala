@@ -8,9 +8,18 @@ import pitch.PitchClass
 
 trait Chord {
   def root: PitchClass
+  protected def tones: Set[PitchClass]
+
+  override def equals(rhs: Any): Boolean = rhs match {
+    case other: Chord => this.tones == other.tones
+    case _ => false
+  }
+
+  override def toString: String = s"Chord(${tones.mkString(",")})"
 }
 object Chord {
   trait Triad extends Chord {
+    protected def tones: Set[PitchClass] = Set(root, third, fifth)
     def third: PitchClass
     def fifth: PitchClass
     def thirdInterval: IntervalClass = third.intervalOf(root)
