@@ -24,5 +24,11 @@ class ChordSpec extends BaseSpec {
       minorC.isMinor shouldBe true
       other.isMinor shouldBe false
     }
+
+    it("is triad if the chord has correct intervals") {
+      majorC.isTriad shouldBe true
+      minorC.isTriad shouldBe true
+      other.isTriad shouldBe false
+    }
   }
 }

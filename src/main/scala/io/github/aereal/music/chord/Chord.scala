@@ -14,8 +14,11 @@ object Chord {
     def third: PitchClass
     def fifth: PitchClass
     def thirdInterval: IntervalClass = third.intervalOf(root)
+    def fifthInterval: IntervalClass = fifth.intervalOf(root)
     def isMajor: Boolean = thirdInterval == IntervalClass.MajorThird
     def isMinor: Boolean = thirdInterval == IntervalClass.MinorThird
+    def isTriad: Boolean =
+      fifthInterval == IntervalClass.PerfectFifth || fifthInterval == IntervalClass.AugmentedFifth || fifthInterval == IntervalClass.DiminishedFifth
   }
   object Triad {
     def apply(t1: PitchClass, t2: PitchClass, t3: PitchClass): Triad =

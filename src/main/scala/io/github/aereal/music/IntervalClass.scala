@@ -12,8 +12,10 @@ object IntervalClass {
   val MajorThird = IntervalClass(4)
   val PerfectFourth = IntervalClass(5)
   val Tritone = IntervalClass(6)
+  val DiminishedFifth = Tritone
   val PerfectFifth = IntervalClass(7)
   val MinorSixth = IntervalClass(8)
+  val AugmentedFifth = MinorSixth
   val MajorSixth = IntervalClass(9)
   val MinorSeventh = IntervalClass(10)
   val MajorSeventh = IntervalClass(11)
