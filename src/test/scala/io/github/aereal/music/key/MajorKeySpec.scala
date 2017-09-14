@@ -19,5 +19,15 @@ class MajorKeySpec extends BaseSpec {
         dMajor.tones shouldBe Seq(D, E, Fis, G, A, H, Cis)
       }
     }
+
+    describe("tonesStream") {
+      it("generates infinite stream of tones") {
+        import PitchClass._
+        val baseTones = Seq(C, D, E, F, G, A, H)
+        val expected = baseTones ++ baseTones
+        val tones = MajorKey(C).tonesStream.take(14).toList
+        tones shouldBe expected
+      }
+    }
   }
 }
