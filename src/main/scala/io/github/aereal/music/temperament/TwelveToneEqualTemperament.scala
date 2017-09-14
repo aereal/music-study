@@ -55,6 +55,9 @@ object TwelveToneEqualTemperament extends Temperament {
     val D4 = new Pitch(Es4.frequency / ratio, PitchClass.D)
     val Des4 = new Pitch(D4.frequency / ratio, PitchClass.Des)
     val C4 = new Pitch(Des4.frequency / ratio, PitchClass.C)
+
+    implicit val ordering12Pitch: Ordering[Pitch] =
+      Ordering.by(_.asInstanceOf[pitch.Pitch])
   }
 
   private class Extractor(pitch: Pitch) {
