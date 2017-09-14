@@ -4,6 +4,8 @@ package aereal
 package music
 package chord
 
+import key.MajorKey
+import key.MinorKey
 import pitch.PitchClass
 
 class ChordSpec extends BaseSpec {
@@ -45,6 +47,20 @@ class ChordSpec extends BaseSpec {
       it("can be built from the root tone and #minor method") {
         val c = Chord.Triad.minor(C)
         c shouldBe Chord.Triad(C, Es, G)
+      }
+
+      it("can be built from ...") {
+        val c1 = Chord.Triad.from(MajorKey(PitchClass.C), ChordPosition.I)
+        c1 shouldBe Chord.Triad(C, E, G)
+
+        val c2 = Chord.Triad.from(MajorKey(PitchClass.C), ChordPosition.II)
+        c2 shouldBe Chord.Triad(D, F, A)
+
+        val c3 = Chord.Triad.from(MinorKey(PitchClass.C), ChordPosition.I)
+        c3 shouldBe Chord.Triad(C, Es, G)
+
+        val c4 = Chord.Triad.from(MinorKey(PitchClass.C), ChordPosition.II)
+        c4 shouldBe Chord.Triad(D, F, As)
       }
     }
   }

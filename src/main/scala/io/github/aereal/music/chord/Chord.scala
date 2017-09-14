@@ -5,6 +5,7 @@ package music
 package chord
 
 import pitch.PitchClass
+import key.Key
 
 trait Chord {
   def root: PitchClass
@@ -48,5 +49,13 @@ object Chord {
         val third = t2
         val fifth = t3
       }
+
+    def from(key: Key, position: ChordPosition): Triad = {
+      key.tonesStream.drop(position.offset).take(5).toList match {
+        case root :: _ :: third :: _ :: fifth :: Nil =>
+          Triad(root, third, fifth)
+        case _ => sys.error("key does not have enough tones")
+      }
+    }
   }
 }
