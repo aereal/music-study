@@ -11,7 +11,7 @@ class ChordGeneratorSpec extends BaseSpec {
 
       val gen = ChordGenerator()
       gen.isStarted shouldBe false
-      gen.previousChordPosition shouldBe None
+      gen.reversedChordsQueue shouldBe Nil
       gen.candidates shouldBe Set(I, IV, V)
       val (nextCode, gen2) = gen.generate()
       Set(I, IV, V) should contain(nextCode)

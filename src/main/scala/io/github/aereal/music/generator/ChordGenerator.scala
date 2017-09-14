@@ -7,29 +7,28 @@ package generator
 import chord.ChordPosition
 import scala.util.Random
 
-class ChordGenerator protected (
-    val previousChordPosition: Option[ChordPosition]) {
+class ChordGenerator protected (val reversedChordsQueue: List[ChordPosition]) {
   import ChordPosition._
 
-  def isStarted: Boolean = previousChordPosition.isDefined
+  def isStarted: Boolean = !reversedChordsQueue.isEmpty
 
-  def candidates: Set[ChordPosition] = previousChordPosition match {
-    case None => Set(I, IV, V)
-    case Some(I) => Set(II, III, IV, V, VI, VII) // TODO: seventh
-    case Some(II) => Set(V) // TODO: seventh
-    case Some(III) => Set(IV) // TODO: dominant
-    case Some(IV) => Set(I, II, V) // TODO: seventh
-    case Some(V) => Set(I, VI) // TODO: borrowed
-    case Some(VI) => Set(II, III, IV, V, VII)
-    case Some(VII) => Set(III)
+  def candidates: Set[ChordPosition] = reversedChordsQueue match {
+    case Nil => Set(I, IV, V)
+    case I :: _ => Set(II, III, IV, V, VI, VII) // TODO: seventh
+    case II :: _ => Set(V) // TODO: seventh
+    case III :: _ => Set(IV) // TODO: dominant
+    case IV :: _ => Set(I, II, V) // TODO: seventh
+    case V :: _ => Set(I, VI) // TODO: borrowed
+    case VI :: _ => Set(II, III, IV, V, VII)
+    case VII :: _ => Set(III)
   }
 
   def generate(): (ChordPosition, ChordGenerator) = {
     val nextChord = Random.shuffle(candidates.toSeq).head
-    val nextGenerator = new ChordGenerator(Some(nextChord))
+    val nextGenerator = new ChordGenerator(nextChord :: reversedChordsQueue)
     (nextChord, nextGenerator)
   }
 }
 object ChordGenerator {
-  def apply(): ChordGenerator = new ChordGenerator(None)
+  def apply(): ChordGenerator = new ChordGenerator(Nil)
 }
