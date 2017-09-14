@@ -3,8 +3,9 @@ package github
 package aereal
 package music
 
-sealed abstract class IntervalClass(val halfTones: Int)
+case class IntervalClass(halfTones: Int)
 object IntervalClass {
-  case object HalfTone extends IntervalClass(1)
-  case object WholeTone extends IntervalClass(2)
+  val Same = IntervalClass(0)
+  val HalfTone = IntervalClass(1)
+  val WholeTone = IntervalClass(2)
 }

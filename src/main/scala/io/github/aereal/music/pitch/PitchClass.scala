@@ -11,6 +11,12 @@ sealed abstract class PitchClass {
       PitchClass.minimalValues.head
     case idx => PitchClass.minimalValues(idx + 1)
   }
+
+  def intervalOf(other: PitchClass): IntervalClass = {
+    val a = PitchClass.minimalValues.indexOf(this)
+    val b = PitchClass.minimalValues.indexOf(other)
+    IntervalClass(a - b)
+  }
 }
 object PitchClass {
   case object C extends PitchClass
