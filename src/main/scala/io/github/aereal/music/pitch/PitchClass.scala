@@ -4,7 +4,14 @@ package aereal
 package music
 package pitch
 
-sealed abstract class PitchClass
+sealed abstract class PitchClass {
+  def next: PitchClass = PitchClass.minimalValues.indexOf(this) match {
+    case -1 => sys.error("BUG")
+    case last if last == (PitchClass.minimalValues.size - 1) =>
+      PitchClass.minimalValues.head
+    case idx => PitchClass.minimalValues(idx + 1)
+  }
+}
 object PitchClass {
   case object C extends PitchClass
   case object Cis extends PitchClass
@@ -27,4 +34,8 @@ object PitchClass {
   case object H extends PitchClass
   val Ces = H
   val His = C
+
+  private val minimalValues = Seq(C, Cis, D, Dis, E, F, Fis, G, Gis, A, B, H)
+
+  val values = Stream.iterate[PitchClass](C)(_.next)
 }
