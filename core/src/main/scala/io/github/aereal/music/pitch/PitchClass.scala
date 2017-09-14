@@ -47,4 +47,20 @@ object PitchClass {
   private val minimalValues = Seq(C, Cis, D, Dis, E, F, Fis, G, Gis, A, B, H)
 
   val values = Stream.iterate[PitchClass](C)(_.next)
+
+  def from(name: String): Option[PitchClass] = name match {
+    case "C" => Some(C)
+    case "Cis" | "Des" => Some(Cis)
+    case "D" => Some(D)
+    case "Dis" | "Es" => Some(Dis)
+    case "E" => Some(E)
+    case "F" => Some(F)
+    case "Fis" | "Ges" => Some(Fis)
+    case "G" => Some(G)
+    case "Gis" | "As" => Some(Gis)
+    case "A" => Some(A)
+    case "Ais" | "B" => Some(B)
+    case "H" => Some(H)
+    case _ => None
+  }
 }
