@@ -36,6 +36,8 @@ lazy val core = (project in file("core"))
 
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
+  .dependsOn(core % "compile->compile;test->test;test->compile")
+  .aggregate(core)
   .settings(
     scalaVersion := "2.12.3",
     scalacOptions ++= commonScalacOptions,
