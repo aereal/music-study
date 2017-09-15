@@ -1,0 +1,2 @@
+GET  /  io.github.aereal.music.web.controllers.RootController.index()
+POST  /harmony  io.github.aereal.music.web.controllers.GenerationController.generate()
